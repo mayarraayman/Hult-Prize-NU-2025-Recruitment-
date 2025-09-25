@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hult Prize NU | Board Recruitment 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e6077e;
+            --secondary: #770af1;
+            --dark: #22004c;
+            --light: #f8f9fa;
+            --text: #333;
+            --text-light: #6c757d;
+            --success: #28a745;
+            --error: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #3a1b6d 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(230, 7, 126, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 7, 126, 0.4);
+            background: #d40672;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .about-image {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Positions Section */
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .position-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .position-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .position-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .position-card .category {
+            display: inline-block;
+            background: rgba(230, 7, 126, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .position-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .position-card li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: var(--text-light);
+        }
+        
+        .position-card li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Application Form */
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, var(--dark) 0%, #3a1b6d 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .form-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-content {
+            padding: 40px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .form-section-title {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-section-title i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .required:after {
+            content: " *";
+            color: var(--error);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(230, 7, 126, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            transition: border-color 0.3s;
+            cursor: pointer;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+        
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            background: #d40672;
+        }
+        
+        .confirmation-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .confirmation-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .confirmation-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-content {
+                padding: 25px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">HULT PRIZE <span>NU</span></div>
+            <p class="tagline">Join the 2025 - 2026 Board & High Board. Lead social entrepreneurship at Nile University.</p>
+            <a href="#apply" class="cta-button">Apply Now</a>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="container">
+            <nav>
+                <div class="logo">Hult Prize NU</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#positions">Open Positions</a>
+                    <a href="#apply">Apply</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Hult Prize at Nile University</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Shape the Future of Social Entrepreneurship</h3>
+                    <p>The Hult Prize is a global movement that challenges students to solve the world's most pressing issues through social entrepreneurship. Each year, the competition focuses on a specific theme aligned with the United Nations Sustainable Development Goals.</p>
+                    <p>As a board member, you'll have the opportunity to develop leadership skills, manage a prestigious campus competition, and connect with a global network of changemakers.</p>
+                    <p>We're looking for passionate students who want to make a real impact on campus and beyond. If you're ready to take on a challenge and help empower the next generation of entrepreneurs, we want you on our team!</p>
+                </div>
+                <div class="about-image">
+                    Hult Prize Nile University
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Positions Section -->
+    <section class="section" id="positions" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Open Positions</h2>
+            <div class="positions-grid">
+                <!-- High Board Position -->
+                <div class="position-card">
+                    <span class="category">High Board</span>
+                    <h3>Treasurer</h3>
+                    <p>Manage the club's finances, budget, and funding initiatives.</p>
+                    <ul>
+                        <li>Budget planning and financial oversight</li>
+                        <li>Sponsorship and fundraising management</li>
+                        <li>Financial reporting and transparency</li>
+                    </ul>
+                </div>
+                
+                <!-- Board Committees -->
+                <div class="position-card">
+                    <span class="category">Board Committee</span>
+                    <h3>Human Resources</h3>
+                    <p>Lead recruitment, training, and team development initiatives.</p>
+                    <ul>
+                        <li>Recruitment and onboarding of team members</li>
+                        <li>Organize training and development sessions</li>
+                        <li>Team performance management</li>
+                        <li>Available roles: Head, Vice Head</li>
+                    </ul>
+                </div>
+                
+                <div class="position-card">
+                    <span class="category">Board Committee</span>
+                    <h3>Logistics & Operations</h3>
+                    <p>Ensure smooth execution of all Hult Prize events and activities.</p>
+                    <ul>
+                        <li>Event planning and coordination</li>
+                        <li>Venue and equipment management</li>
+                        <li>Logistics for competitions and workshops</li>
+                        <li>Available roles: Head, Vice Head</li>
+                    </ul>
+                </div>
+                
+                <div class="position-card">
+                    <span class="category">Board Committee</span>
+                    <h3>Academics & Training</h3>
+                    <p>Develop educational content and training programs for participants.</p>
+                    <ul>
+                        <li>Curriculum development for workshops</li>
+                        <li>Mentor and judge coordination</li>
+                        <li>Educational resource creation</li>
+                        <li>Available roles: Head, Vice Head</li>
+                    </ul>
+                </div>
+                
+                <div class="position-card">
+                    <span class="category">Board Committee</span>
+                    <h3>Media & Communications</h3>
+                    <p>Create content and maintain brand identity across platforms.</p>
+                    <ul>
+                        <li>Graphic design for marketing materials</li>
+                        <li>Social media management and content creation</li>
+                        <li>Video production and editing</li>
+                        <li>Available roles: Head, Vice Head (Graphic Design, Video Editing)</li>
+                    </ul>
+                </div>
+                
+                <div class="position-card">
+                    <span class="category">Board Committee</span>
+                    <h3>Partnerships & Fundraising</h3>
+                    <p>Build relationships with sponsors, mentors, and community partners.</p>
+                    <ul>
+                        <li>Sponsorship acquisition and management</li>
+                        <li>Partnership development</li>
+                        <li>Fundraising campaign coordination</li>
+                        <li>Available roles: Head, Vice Head</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Application Form -->
+    <section class="section" id="apply">
+        <div class="container">
+            <h2 class="section-title">Application Form</h2>
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Hult Prize NU Board Application 2025</h2>
+                    <p>Please fill out all sections carefully. All fields marked with * are required.</p>
+                </div>
+                <div class="form-content">
+                    <form id="boardApplicationForm">
+                        <!-- Section 1: Personal Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title"><i class="fas fa-user"></i> Personal Information</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName" class="required">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="universityId" class="required">University ID</label>
+                                    <input type="text" id="universityId" name="universityId" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" class="required">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="required">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="faculty" class="required">Faculty</label>
+                                    <select id="faculty" name="faculty" required>
+                                        <option value="">Select Faculty</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Engineering">Engineering</option>
+                                        <option value="ITCS">ITCS</option>
+                                        <option value="Biotechnology">Biotechnology</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="major" class="required">Major</label>
+                                    <input type="text" id="major" name="major" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="yearOfStudy" class="required">Year of Study</label>
+                                <select id="yearOfStudy" name="yearOfStudy" required>
+                                    <option value="">Select Year</option>
+                                    <option value="Freshman">Freshman</option>
+                                    <option value="Sophomore">Sophomore</option>
+                                    <option value="Junior">Junior</option>
+                                    <option value="Senior">Senior</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Section 2: Position Selection -->
+                        <div class="form-section">
+                            <h3 class="form-section-title"><i class="fas fa-briefcase"></i> Position Selection</h3>
+                            
+                            <div class="form-group">
+                                <label for="committee" class="required">Which committee are you applying for?</label>
+                                <select id="committee" name="committee" required>
+                                    <option value="">Select Committee</option>
+                                    <option value="Treasurer">Treasurer (High Board)</option>
+                                    <option value="Human Resources">Human Resources</option>
+                                    <option value="Logistics & Operations">Logistics & Operations</option>
+                                    <option value="Academics & Training">Academics & Training</option>
+                                    <option value="Media & Communications">Media & Communications</option>
+                                    <option value="Partnerships & Fundraising">Partnerships & Fundraising</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="roleInterest" class="required">What type of role are you interested in?</label>
+                                <select id="roleInterest" name="roleInterest" required>
+                                    <option value="">Select Role Type</option>
+                                    <option value="Head">Head Position</option>
+                                    <option value="Vice Head">Vice Head Position</option>
+                                    <option value="Member">I chose Treasurer!</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mediaSpecialization" id="mediaSpecializationLabel" style="display: none;">Media Specialization (if applicable)</label>
+                                <select id="mediaSpecialization" name="mediaSpecialization" style="display: none;">
+                                    <option value="">Select Specialization</option>
+                                    <option value="Graphic Design">Graphic Design</option>
+                                    <option value="Video Editing">Video Editing</option>
+                                    <option value="Graphic Design & Video Editing">Graphic Design & Video Editing</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Section 3: Experience & Motivation -->
+                        <div class="form-section">
+                            <h3 class="form-section-title"><i class="fas fa-star"></i> Experience & Motivation</h3>
+                            
+                            <div class="form-group">
+                                <label for="experience" class="required">Please describe your relevant experience</label>
+                                <textarea id="experience" name="experience" required placeholder="Include any previous roles, projects, or activities that demonstrate your qualifications..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="motivation" class="required">Why are you interested in joining the Hult Prize board?</label>
+                                <textarea id="motivation" name="motivation" required placeholder="Explain what motivates you and why you're a good fit for this role..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="skills" class="required">What specific skills would you bring to the team?</label>
+                                <textarea id="skills" name="skills" required placeholder="List your key skills and how they would benefit the committee..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Section 4: Availability -->
+                        <div class="form-section">
+                            <h3 class="form-section-title"><i class="fas fa-clock"></i> Availability</h3>
+                            
+                            <div class="form-group">
+                                <label for="hoursPerWeek" class="required">How many hours per week can you dedicate to Hult Prize?</label>
+                                <select id="hoursPerWeek" name="hoursPerWeek" required>
+                                    <option value="">Select Hours</option>
+                                    <option value="Less than 5">Less than 5 hours</option>
+                                    <option value="5-10">5-10 hours</option>
+                                    <option value="10-15">10-15 hours</option>
+                                    <option value="15+">15+ hours</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="commitments">Do you have other commitments that might affect your availability?</label>
+                                <textarea id="commitments" name="commitments" placeholder="Please describe any other activities, jobs, or responsibilities..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Section 5: Documents -->
+                        <div class="form-section">
+                            <h3 class="form-section-title"><i class="fas fa-file"></i> Documents</h3>
+                            
+                            <div class="form-group">
+                                <label for="cv">Upload your CV (PDF recommended)</label>
+                                <div class="file-upload" onclick="document.getElementById('cv').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload your CV</p>
+                                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+                                </div>
+                                <div class="file-name" id="cvFileName">No file chosen</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="portfolio">Portfolio or work samples (for Media applicants)</label>
+                                <div class="file-upload" onclick="document.getElementById('portfolio').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload portfolio files</p>
+                                    <input type="file" id="portfolio" name="portfolio" accept=".pdf,.jpg,.jpeg,.png,.mp4,.mov">
+                                </div>
+                                <div class="file-name" id="portfolioFileName">No file chosen</div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Submit Application</button>
+                        
+                        <div id="confirmationMessage" class="confirmation-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Hult Prize Nile University</div>
+                <p>Empowering social entrepreneurs to solve the world's toughest challenges</p>
+                
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#positions">Positions</a>
+                    <a href="#apply">Apply</a>
+                </div>
+                
+                <p class="copyright">&copy; 2024 Hult Prize Nile University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Show media specialization when Media committee is selected
+        document.getElementById('committee').addEventListener('change', function() {
+            const mediaSpecialization = document.getElementById('mediaSpecialization');
+            const mediaLabel = document.getElementById('mediaSpecializationLabel');
+            
+            if (this.value === 'Media & Communications') {
+                mediaSpecialization.style.display = 'block';
+                mediaLabel.style.display = 'block';
+                mediaSpecialization.required = true;
+            } else {
+                mediaSpecialization.style.display = 'none';
+                mediaLabel.style.display = 'none';
+                mediaSpecialization.required = false;
+            }
+        });
+        
+        // File upload display
+        document.getElementById('cv').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('cvFileName').textContent = fileName;
+        });
+        
+        document.getElementById('portfolio').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('portfolioFileName').textContent = fileName;
+        });
+        
+        // Form submission
+        document.getElementById('boardApplicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitButton = document.querySelector('.submit-btn');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = 'Submitting...';
+            submitButton.disabled = true;
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Add timestamp
+            formData.append('timestamp', new Date().toISOString());
+            
+            // Replace this URL with your Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwXYq4_Jw-uetL-60BQs0SV8pCXk3hIbRqrf5LQc4cRJnREUg_0no1LToin8h4vWkSHfg/exec';
+            
+            // Send data to Google Sheets
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData 
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('✅ Application submitted successfully! We will contact you soon.', 'success');
+                    document.getElementById('boardApplicationForm').reset();
+                    document.getElementById('cvFileName').textContent = 'No file chosen';
+                    document.getElementById('portfolioFileName').textContent = 'No file chosen';
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('❌ There was an error submitting your application. Please try again or contact us directly.', 'error');
+            })
+            .finally(() => {
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            });
+        });
+        
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('confirmationMessage');
+            messageDiv.textContent = message;
+            messageDiv.className = `confirmation-message ${type}`;
+            
+            // Scroll to confirmation message
+            messageDiv.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }
+    </script>
+</body>
+</html>
