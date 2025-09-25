@@ -842,60 +842,51 @@
         });
         
         // Form submission
-        document.getElementById('boardApplicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitButton = document.querySelector('.submit-btn');
-            const originalText = submitButton.innerHTML;
-            submitButton.innerHTML = 'Submitting...';
-            submitButton.disabled = true;
-            
-            // Get form data
-            const formData = new FormData(this);
-            
-            // Add timestamp
-            formData.append('timestamp', new Date().toISOString());
-            
-            // Replace this URL with your Google Apps Script Web App URL
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxsWgJae8E_pMYG5RSNB5gQ_zk2N_7Ju3Ny35uyvXAUBRnPa8hs2fZe9noZH1xbjzyVug/exec';
-            
-            // Send data to Google Sheets
-            fetch(scriptURL, { 
-                method: 'POST', 
-                body: formData 
-            })
-            .then(response => {
-                if (response.ok) {
-                    showMessage('✅ Application submitted successfully! We will contact you soon.', 'success');
-                    document.getElementById('boardApplicationForm').reset();
-                    document.getElementById('cvFileName').textContent = 'No file chosen';
-                    document.getElementById('portfolioFileName').textContent = 'No file chosen';
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showMessage('❌ There was an error submitting your application. Please try again or contact us directly.', 'error');
-            })
-            .finally(() => {
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            });
-        });
-        
-        function showMessage(message, type) {
-            const messageDiv = document.getElementById('confirmationMessage');
-            messageDiv.textContent = message;
-            messageDiv.className = `confirmation-message ${type}`;
-            
-            // Scroll to confirmation message
-            messageDiv.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center' 
-            });
+document.getElementById('boardApplicationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitButton = document.querySelector('.submit-btn');
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = 'Submitting...';
+    submitButton.disabled = true;
+
+    const form = document.getElementById('boardApplicationForm');
+    const formData = new FormData(form);
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyGuRVcQCwOLIjUYrXnKrcynZz3u7AD-JzoV-BXI6zBfN6hCDSHSKbxQq3y6QvjhqswAA/exec';
+
+    fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.result === "success") {
+            showMessage('✅ Application submitted successfully!', 'success');
+            form.reset();
+            document.getElementById('cvFileName').textContent = 'No file chosen';
+            document.getElementById('portfolioFileName').textContent = 'No file chosen';
+        } else {
+            throw new Error(result.error);
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showMessage('❌ Submission failed. Please try again.', 'error');
+    })
+    .finally(() => {
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    });
+});
+
+function showMessage(message, type) {
+    const messageDiv = document.getElementById('confirmationMessage');
+    messageDiv.textContent = message;
+    messageDiv.className = `confirmation-message ${type}`;
+    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
     </script>
 </body>
 </html
